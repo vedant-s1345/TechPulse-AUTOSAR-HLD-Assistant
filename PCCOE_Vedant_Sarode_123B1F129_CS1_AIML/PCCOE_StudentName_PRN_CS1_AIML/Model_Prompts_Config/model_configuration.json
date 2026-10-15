@@ -1,0 +1,40 @@
+{
+  "project": "TechPulse FY-26 Applied AI/ML Capstone",
+  "case_study": "CS1 - AUTOSAR HLD Document Analysis Assistant",
+  "version": "1.0.0",
+  "updated_at": "2026-10-15",
+  "embedding_engine": {
+    "default_model": "all-MiniLM-L6-v2",
+    "provider": "HuggingFace / SentenceTransformers",
+    "vector_dimension": 384,
+    "normalized": true,
+    "distance_metric": "Cosine Similarity (Inner Product on L2-normalized vectors)",
+    "execution_target": "Local CPU",
+    "offline_fallback_engine": "TfidfDenseEngine (scikit-learn SVD 128-d)"
+  },
+  "vector_store": {
+    "technology": "FAISS (faiss-cpu v1.15.1)",
+    "index_type": "IndexFlatIP",
+    "persistence": "Local filesystem (faiss_index.bin + chunks_metadata.pkl)",
+    "multi_document_support": true,
+    "page_level_traceability": true
+  },
+  "chunking_parameters": {
+    "default_chunk_size": 500,
+    "default_chunk_overlap": 80,
+    "boundary_policy": "Strict page boundary enforcement (no cross-page chunk smearing)"
+  },
+  "llm_configuration": {
+    "generative_provider": "Google Gemini",
+    "generative_model": "gemini-2.5-flash",
+    "temperature": 0.0,
+    "offline_deterministic_fallback": "DeterministicRetrievalFallback (salient sentence extraction)",
+    "cost_policy": "Zero external cost by default; requires explicit GEMINI_API_KEY for API calls"
+  },
+  "retrieval_guardrails": {
+    "default_top_k": 4,
+    "similarity_threshold": 0.32,
+    "prompt_injection_defense": "Active pattern neutralizer + XML boundary encapsulation",
+    "insufficient_evidence_response": "The provided document does not provide enough information to answer this question."
+  }
+}

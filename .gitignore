@@ -1,0 +1,19 @@
+# TechPulse FY-26 Capstone .gitignore
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+.env.*
+!.env.example	
+*.log
+.DS_Store
+Thumbs.db
+.pytest_cache/
+.coverage
+htmlcov/
+*.sqlite
+*.db
+*.py[cod]
+.streamlit/secrets.toml
+vector_store_data/
